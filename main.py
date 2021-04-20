@@ -1,5 +1,5 @@
 '''
-TODO: 
+#TODO: 
 Jako luokkiin (done ainakin osittain)
 Kommentit kuntoon (done)
 Tallennusfunktio (WIP)
@@ -19,6 +19,9 @@ counter = 1
 
 
 class main: #Sovelluksen pääluokka. Sisältää päälogiikan
+
+    """ def __init__(self):
+        pass """
         
     def inputError(enterTaskField) :     
         if enterTaskField.get() == "" :
@@ -47,38 +50,38 @@ class main: #Sovelluksen pääluokka. Sisältää päälogiikan
         counter += 1
         clear_taskField()
 
-def delete(taskNumberField, clear_taskNumberField, tekstiAlue, *args) :     
+def delete(taskNumberField, clear_taskNumberField, tekstiAlue) :     
     global counter    
     if len(tasks_list) == 0 :      # Jos tyhjä
         messagebox.showerror("404 tehtävää ei löytynyt")
         return
  
-        # Mikä tehtävä poistetaan
-        number = taskNumberField.get(1.0, END)
+    # Mikä tehtävä poistetaan
+    number = taskNumberField.get(1.0, END)
  
-        # Jos tyhjä
-        if number == "\n" :
-            messagebox.showerror("input error")
-            return    
-        else :
-            task_no = int(number)
-        clear_taskNumberField()
+    # Jos tyhjä
+    if number == "\n" :
+        messagebox.showerror("input error")
+        return    
+    else :
+        task_no = int(number)
+    clear_taskNumberField()
      
-        # poistaa pyydetyn tehtävän
-        tasks_list.pop(task_no - 1)
-        counter -= 1
-        tekstiAlue.delete(1.0, END)
+    # poistaa pyydetyn tehtävän
+    tasks_list.pop(task_no - 1)
+    counter -= 1
+    tekstiAlue.delete(1.0, END)
  
-        # kirjoittaa tehtävälistan uudelleen kun tehtävä on poistettu
-        for i in range(len(tasks_list)) :
-            tekstiAlue.insert('end -1 chars', "[ " + str(i + 1) + " ] " + tasks_list[i])
+     # kirjoittaa tehtävälistan uudelleen kun tehtävä on poistettu
+    for i in range(len(tasks_list)) :
+        tekstiAlue.insert('end -1 chars', "[ " + str(i + 1) + " ] " + tasks_list[i])
 
     
 
-class SaveAndLoad(): #Work in progress. Tähän tulee lataus/tallennus systeemit
+class SaveAndLoad(): #Work in progress. Tähän tulee lataus/tallennus systeemit. Tod.näk kopioitu häpeilemättä labratyöstä
     pass
      
-class guiRun(): #GUI- luokka. Sisältää tkinter säädöt ja muut mahdolliset Ui elementit #TODO: Siirrä omaan tiedstoonsa
+class gui(): #GUI- luokka. Sisältää tkinter säädöt ja muut mahdolliset Ui elementit #TODO: Siirrä omaan tiedstoonsa
     gui = Tk()
     gui.configure(background = "light gray")
     gui.title("ToDo")
@@ -103,6 +106,3 @@ class guiRun(): #GUI- luokka. Sisältää tkinter säädöt ja muut mahdolliset 
                         
     Exit.grid(row = 7, column = 2)
  
-# käynnistää sovelluksen
-if __name__ == "__main__" :
-        guiRun.gui.mainloop()
