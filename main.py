@@ -103,7 +103,6 @@ class guiRun(): #GUI- luokka. Sisältää tkinter säädöt ja muut mahdolliset 
                         
     Exit.grid(row = 7, column = 2)
  
-    # käynnistää GUI:n
-    
+# käynnistää sovelluksen
 if __name__ == "__main__" :
         guiRun.gui.mainloop()
